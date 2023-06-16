@@ -15,12 +15,10 @@ const Cars = () => {
 	const fetchData = async () => {
 		try {
 			const response = await fetch(url);
-			const { cars } = await response.json();
-			console.log(cars)
-			if (cars && cars.length > 0) {
-				setcarData(cars);
-				setcarData(cars);
-				setIsLoading(false);
+			const data = await response.json();
+			console.log(data.cars)
+			if (data.cars && data.cars.length > 0) {
+				setcarData(data.cars);
 			}
 		} catch (error) {
 			console.error(error);	
@@ -28,22 +26,30 @@ const Cars = () => {
 	};
 
 	useEffect(() => {
-		fetchData();
-		console.log(carData)
-	}, [url]);
+		if (!carData) {
+			fetchData();
+		}
 
-	if(isLoading){
+		setIsLoading(false)
+		console.log("carData in useEffect is : ", carData)
+	}, [carData]);
+
+	if(!carData){
 		return (
 			<ActivityIndicator size="large"  />
 		)
 	}
 
+	console.log("carData before mapping is : " , carData)
+
   return (
-	<View className="px-5 w-full"> 
-		<View className="flex-row gap-2 w-full">{carData.map( car => {
-			const imageUrl = car.image;
-			<Image key={car.id} source={{ uri: imageUrl }} className="w-20 h-20 image object-cover rounded-full" />
-		})}</View>
+	<View className="flex-2 w-full mt-3 "> 
+		<View className="flex gap-2 w-full h-full bg-slate-500 rounded-md items-center">{carData.map( car => (
+			<View key={car.id} className="w-full items-center my-3 border border-b-2 border-blue-400">
+				<Text className="text-2xl text-black">{car.name}</Text>
+				<Image source={{uri : car.image }} className="rounded-md w-20 h-20"/>
+			</View>
+		))}</View>
 	</View>
   )
 }

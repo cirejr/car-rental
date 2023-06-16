@@ -22,7 +22,7 @@ export default function home() {
   };
 
   return (
-    <SafeAreaView className="flex-1 items-center gap-3 justify-center w-full px-5 bg-slate-200">
+    <SafeAreaView className="flex-1 items-center gap-3 justify-center w-full px-2 bg-slate-200">
       <Header />
       <View className="flex-row bg-white rounded-full p-2 gap-1 w-full">
         <AntDesign name="search1" size={24} color="black" />
