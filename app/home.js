@@ -15,7 +15,6 @@ import Cars from "../components/Cars";
 
 export default function home() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleSearch = (query) => {
     setSearchQuery(query);

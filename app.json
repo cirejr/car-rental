@@ -5,6 +5,11 @@
       "bundler": "metro"
     },
     "name": "car-rental",
-    "slug": "car-rental"
+    "slug": "car-rental",
+    "extra": {
+      "router": {
+        "origin": "/api/db.json"
+      }
+    }
   }
 }

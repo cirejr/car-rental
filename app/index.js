@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import { hero } from "../assets";
 import { Link } from "expo-router";
+import "url-search-params-polyfill";
 
 export default function Page() {
   return (
@@ -29,8 +30,8 @@ export default function Page() {
         </View>
         <View className="flex items-center justify-center gap-2 w-full mt-7 px-10">
           <TouchableOpacity className="w-full rounded-full p-3 items-center bg-cyan-900">
-            <Link href="/home">
-              <Text className="text-xl text-white">Get Started </Text>
+            <Link href="/home" className="w-full items-center text-center">
+              <Text className="text-xl text-white ">Get Started</Text>
             </Link>
           </TouchableOpacity>
           <TouchableOpacity className="w-full rounded-full p-3 items-center">

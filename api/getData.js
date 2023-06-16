@@ -4,7 +4,7 @@ const client = createClient({
   projectId: "nf5r3it9",
   dataset: "production",
   apiVersion: "2023-06-12",
-  useCdn: false,
+  useCdn: true,
 });
 
 export const getData = async () => {

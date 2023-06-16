@@ -1,0 +1,52 @@
+{
+  "cars": [
+    {
+      "id": "1",
+      "name": "Porsche 911",
+      "description": "The Porsche 911 is a classic sports car known for its performance and design.",
+      "image": "https://cdn.sanity.io/images/nf5r3it9/production/6b941232e27df905d7fcb535049116fb5f7d367b-640x800.jpg",
+      "brand": "Porsche",
+      "brandImage": "https://cdn.sanity.io/images/nf5r3it9/production/c9e8b4ba42ce754759d2372ebd31e16808d6e59c-2400x2400.png",
+      "seats": 2,
+      "rentalPrice": 150,
+      "maxSpeed": 200,
+      "engineOut": "4.0L Flat-6"
+    },
+    {
+      "id": "2",
+      "name": "BMW M3",
+      "description": "The BMW M3 is a high-performance luxury sedan.",
+      "image": "https://cdn.sanity.io/images/nf5r3it9/production/fdc7029cda5203e5722b387d5b7587b4f10ed844-1000x667.jpg",
+      "brand": "BMW",
+      "brandImage": "https://cdn.sanity.io/images/nf5r3it9/production/2562671db610efd78ba8d1745fbb0b46a3e0b196-3840x2160.png",
+      "seats": 4,
+      "rentalPrice": 120,
+      "maxSpeed": 180,
+      "engineOut": "3.0L Inline-6"
+    },
+    {
+      "id": "3",
+      "name": "Mercedes-Benz S-Class",
+      "description": "The Mercedes-Benz S-Class is a luxurious full-size sedan.",
+      "image": "https://cdn.sanity.io/images/nf5r3it9/production/850b70bc03067b1a26adbd18b619455b3158d791-640x800.jpg",
+      "brand": "Mercedes-Benz",
+      "brandImage": "https://cdn.sanity.io/images/nf5r3it9/production/d655197d283dd8e2828349337c54548f8f856149-1920x1080.png",
+      "seats": 5,
+      "rentalPrice": 200,
+      "maxSpeed": 220,
+      "engineOut": "4.0L V8"
+    },
+    {
+      "id": "4",
+      "name": "Audi R8",
+      "description": "The Audi R8 is a high-performance supercar with striking looks.",
+      "image": "https://cdn.sanity.io/images/nf5r3it9/production/66bc5caf0ba54a67b7b006c27a3a9ab2e8db4e63-640x960.jpg",
+      "brand": "Audi",
+      "brandImage": "https://cdn.sanity.io/images/nf5r3it9/production/a3cf5b9ffed4a99f40c72abceac2ad96d84f31ee-2272x1704.png",
+      "seats": 2,
+      "rentalPrice": 200,
+      "maxSpeed": 220,
+      "engineOut": "4.0L V8"
+	}
+  ]
+}	
