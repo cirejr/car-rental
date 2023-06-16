@@ -43,9 +43,9 @@ const Cars = () => {
 	console.log("carData before mapping is : " , carData)
 
   return (
-	<View className="flex-2 w-full mt-3 "> 
-		<View className="flex gap-2 w-full h-full bg-slate-500 rounded-md items-center">{carData.map( car => (
-			<View key={car.id} className="w-full items-center my-3 border border-b-2 border-blue-400">
+	<View className="flex w-screengit mt-3 "> 
+		<View className="flex gap-2 w-full bg-slate-300 rounded-md items-center">{carData.map( car => (
+			<View key={car.id} className="w-full items-center my-3 border-b-2 border-white">
 				<Text className="text-2xl text-black">{car.name}</Text>
 				<Image source={{uri : car.image }} className="rounded-md w-20 h-20"/>
 			</View>
