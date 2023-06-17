@@ -6,7 +6,7 @@ import { userpfp } from '../assets';
 
 const Header = () => {
   return (
-	  <View className="flex-row justify-between items-center w-full p-2">
+	  <View className="flex-row justify-between items-center w-full p-2 mb-2">
         <View className="flex">
           <Text className="text-gray-400 font-light">Location</Text>
           <Text className="text-2xl font-semibold">Dakar, HLM</Text>

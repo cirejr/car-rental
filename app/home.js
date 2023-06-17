@@ -1,40 +1,25 @@
-import {
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  View,
-  Image,
-  TextInput,
-} from "react-native";
-import React, { useState } from "react";
+import { SafeAreaView, ScrollView, View } from "react-native";
 import { Link } from "expo-router";
-import { AntDesign } from "@expo/vector-icons";
 
 import Header from "../components/Header";
 import Cars from "../components/Cars";
+import Search from "../components/Search";
+import RandomCars from "../components/RandomCars";
+import Brands from "../components/Brands";
 
 export default function home() {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-    console.log(query);
-  };
-
   return (
-    <SafeAreaView className="flex-1 items-center gap-3 justify-center w-screen bg-slate-200 p-2">
-      <Header />
-      <View className="flex-row bg-white rounded-full p-2 gap-1 w-screen">
-        <AntDesign name="search1" size={24} color="black" />
-        <TextInput
-          clearButtonMode="always"
-          placeholder="search your dream car..."
-          value={searchQuery}
-          onChange={(query) => handleSearch(query)}
-          className="w-full"
-        />
+    <SafeAreaView className="flex-1 pt-10 bg-slate-200">
+      <View className=" flex items-center space-y-4 justify-center p-3">
+        <Header />
+        <Search />
+        <Brands />
       </View>
-      <Cars />
+      <ScrollView className="flex-3 rounded-t-[50px] bg-white w-full mt-4 px-4">
+        <View className="mt-10">
+          <RandomCars />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }

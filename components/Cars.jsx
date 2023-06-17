@@ -1,46 +1,19 @@
 import { View, Text, ActivityIndicator } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import "url-search-params-polyfill";	
 import Brands from './Brands';
 import { Image } from 'react-native';
-
-//const url =`https://nf5r3it9.api.sanity.io/v1/data/query/production?query=*[_type == 'car']` ;
-const url = '/api/db.json'
+import CarContextProvider from '../contexts/CarContextProvider';
+import { CarsContext } from '../contexts/CarContextProvider';
 
 const Cars = () => {
-	const [carData, setcarData] = useState(null)
-	const [isLoading, setIsLoading] = useState(true)
-	const [carBrand, setcarBrand] = useState(null)
+	const { carData } = useContext(CarsContext)
 
-	const fetchData = async () => {
-		try {
-			const response = await fetch(url);
-			const data = await response.json();
-			console.log(data.cars)
-			if (data.cars && data.cars.length > 0) {
-				setcarData(data.cars);
-			}
-		} catch (error) {
-			console.error(error);	
-		}
-	};
+	console.log(" car Data after useContext is : ",carData)
 
-	useEffect(() => {
-		if (!carData) {
-			fetchData();
-		}
-
-		setIsLoading(false)
-		console.log("carData in useEffect is : ", carData)
-	}, [carData]);
-
-	if(!carData){
-		return (
-			<ActivityIndicator size="large"  />
-		)
+	if (!carData) {
+		return <ActivityIndicator size="large" />;
 	}
-
-	console.log("carData before mapping is : " , carData)
 
   return (
 	<View className="flex w-screengit mt-3 "> 
