@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, View } from "react-native";
+import { SafeAreaView, ScrollView, Text, View } from "react-native";
 import { Link } from "expo-router";
 
 import Header from "../components/Header";
@@ -18,6 +18,9 @@ export default function home() {
       <ScrollView className="flex-3 rounded-t-[50px] bg-white w-full mt-4 px-4">
         <View className="mt-10">
           <RandomCars />
+          <Link href="(tabs)/tab1">
+            <Text>Go to tab1</Text>
+          </Link>
         </View>
       </ScrollView>
     </SafeAreaView>
