@@ -1,11 +1,11 @@
 import { SafeAreaView, ScrollView, View } from "react-native";
 import { Link } from "expo-router";
 
-import Header from "../components/Header";
-import Search from "../components/Search";
-import RandomCars from "../components/RandomCars";
-import Brands from "../components/Brands";
-import Nearby from "../components/Nearby";
+import Header from "../../components/Header";
+import Search from "../../components/Search";
+import RandomCars from "../../components/RandomCars";
+import Brands from "../../components/Brands";
+import Nearby from "../../components/Nearby";
 
 export default function home() {
   return (

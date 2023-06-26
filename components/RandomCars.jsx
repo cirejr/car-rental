@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import { CarsContext } from '../contexts/CarContextProvider'
 import { FontAwesome,FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 import { StyleSheet } from 'react-native';
+import { Link } from 'expo-router';
 
 
 
@@ -16,25 +17,27 @@ const RandomCars = () => {
 			<Text className="text-2xl font-semibold">Best Cars</Text>
 			<Text className="text-xl font-semibold text-gray-400">View All</Text>
 		</View>
-		<View className="flex-row w-full items-center justify-between ">
+		<View className="flex-row w-full items-center justify-between bg-white">
 			{randomCars.map( car => (
-				<View key={car.id} className="flex mt-2 shadow-xl rounded-lg w-[48%] h-48 bg-white" >
-					<Image source={{uri : car.image }} className="w-full h-1/2 object-cover rounded-t-lg"/>
-					<View className="flex w-full h-1/2 p-2">
-						<Text className="text-lg font-semibold ">{car.name.length > 15 ? `${car.name.substring(0, 10)}...` : car.name}</Text>
-						<Text className="text-gray-400 "> <FontAwesome name='map-marker' size={15} /> Dakar, Grand Yoff</Text>
-						<View className="flex-row items-center justify-between mt-2">
-							<Text className="space-x-2">
-								<MaterialCommunityIcons name='seat' color="black" size={15}/>
-								4 seats
-							</Text>
-							<Text className="space-x-2">
-								<FontAwesome5 name="comments-dollar" size={15} color="black" />
-								$30/hour
-							</Text>
+				<Link href={`/(home)/Cars/${car.id}`} key={car.id}>
+					<View className="flex mt-2 shadow-xl rounded-lg w-[48%] h-48 bg-white" >
+						<Image source={{uri : car.image }} className="w-full h-1/2 object-cover rounded-t-lg"/>
+						<View className="flex w-full h-1/2 p-2">
+							<Text className="text-lg font-semibold ">{car.name.length > 15 ? `${car.name.substring(0, 10)}...` : car.name}</Text>
+							<Text className="text-gray-400 "> <FontAwesome name='map-marker' size={15} /> Dakar, Grand Yoff</Text>
+							<View className="flex-row items-center justify-between mt-2">
+								<Text className="space-x-2">
+									<MaterialCommunityIcons name='seat' color="black" size={15}/>
+									4 seats
+								</Text>
+								<Text className="space-x-2">
+									<FontAwesome5 name="comments-dollar" size={15} color="black" />
+									$30/hour
+								</Text>
+							</View>
 						</View>
 					</View>
-				</View>
+				</Link>
 			))}
 		</View>
 	</View>

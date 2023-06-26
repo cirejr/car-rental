@@ -30,7 +30,10 @@ export default function Page() {
         </View>
         <View className="flex items-center justify-center gap-2 w-full mt-5 px-10">
           <TouchableOpacity className="w-full rounded-full p-3 items-center bg-indigo-700">
-            <Link href="/home" className="w-full items-center text-center">
+            <Link
+              href="/(home)/home"
+              className="w-full items-center text-center"
+            >
               <Text className="text-xl text-white ">Get Started</Text>
             </Link>
           </TouchableOpacity>
