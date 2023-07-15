@@ -1,0 +1,9 @@
+Add OnBoardingScreen by using the react-native-swiper package
+Will need react-native-async-storage to keep track of the onBoarding in order to only load it once 
+
+Fetching data from sanity, in this case requires the full query graphql style and also to get the image
+I need to access the url store in the asset property 
+
+To create the search functionnality 
+-I need to apply the filter on the pool of item, and return the items that contain/include the text inputed*
+-And have to do a conditionnal rendering based on state of the filter, i.e if no filter render the whole data fetched 

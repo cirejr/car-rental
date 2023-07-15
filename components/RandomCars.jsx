@@ -17,23 +17,23 @@ const RandomCars = () => {
 			<Text className="text-2xl font-semibold">Best Cars</Text>
 			<Text className="text-xl font-semibold text-gray-400">View All</Text>
 		</View>
-		<View className="flex-row w-full items-center justify-between bg-white">
+		<View className="flex-row w-full items-center justify-between">
 			{randomCars.map( car => (
 				<Link href={`/(home)/Cars/${car.id}`} key={car.id}>
 					<View className="flex mt-2 shadow-xl rounded-lg w-[48%] h-48 bg-white" >
 						<Image source={{uri : car.image }} className="w-full h-1/2 object-cover rounded-t-lg"/>
 						<View className="flex w-full h-1/2 p-2">
-							<Text className="text-lg font-semibold ">{car.name.length > 15 ? `${car.name.substring(0, 10)}...` : car.name}</Text>
-							<Text className="text-gray-400 "> <FontAwesome name='map-marker' size={15} /> Dakar, Grand Yoff</Text>
-							<View className="flex-row items-center justify-between mt-2">
-								<Text className="space-x-2">
+							<Text className="text-base font-semibold">{ car.name.length > 15 ? `${car.name.substring(0, 10)}...` : car.name}</Text>
+							<Text className="text-gray-400"><FontAwesome name='map-marker' size={15} /> Dakar, Grand Yoff</Text>
+							<View className="flex-row items-center gap-2 justify-between mt-2">
+								<View className="space-x-1 flex-row items-center">
 									<MaterialCommunityIcons name='seat' color="black" size={15}/>
-									4 seats
-								</Text>
-								<Text className="space-x-2">
+									<Text>4 seats</Text>
+								</View>
+								<View className="space-x-1 flex-row items-center">
 									<FontAwesome5 name="comments-dollar" size={15} color="black" />
-									$30/hour
-								</Text>
+									<Text>$30/hour</Text>
+								</View>
 							</View>
 						</View>
 					</View>
