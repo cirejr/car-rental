@@ -7,10 +7,10 @@
       "image": "https://s3.caroom.fr/cache/miniatures_600x350/modeles/porsche-911-turbo-s-1680611241.png",
       "brand": "Porsche",
       "brandImage": "https://logohistory.net/wp-content/uploads/2023/01/Porsche-Logo.png",
-      "seats": 2,
+      "seats": "2 seats",
       "rentalPrice": 150,
-      "maxSpeed": 200,
-      "engineOut": "4.0L Flat-6"
+      "maxSpeed": "200 km/h",
+      "engineOut": "500 HP"
     },
     {
       "id": "2",
@@ -19,10 +19,10 @@
       "image": "https://file.kelleybluebookimages.com/kbb/base/evox/CP/12255/2018-BMW-M3-front_12255_032_2400x1800_300_nologo.png",
       "brand": "BMW",
       "brandImage": "https://logodownload.org/wp-content/uploads/2014/04/mercedes-benz-logo-8.png",
-      "seats": 4,
+      "seats": "4 seats",
       "rentalPrice": 120,
-      "maxSpeed": 180,
-      "engineOut": "3.0L Inline-6"
+      "maxSpeed": "180 km/h",
+      "engineOut": "600 HP"
     },
     {
       "id": "3",
@@ -31,10 +31,10 @@
       "image": "https://pngimg.com/uploads/ferrari/ferrari_PNG102816.png",
       "brand": "Ferrari",
       "brandImage": "https://static.vecteezy.com/system/resources/previews/019/017/579/original/scuderia-ferrari-transparent-free-png.png",
-      "seats": 5,
+      "seats": "5 seats",
       "rentalPrice": 200,
-      "maxSpeed": 220,
-      "engineOut": "4.0L V8"
+      "maxSpeed": "220 km/h",
+      "engineOut": "800 HP"
     },
     {
       "id": "4",
@@ -43,10 +43,10 @@
       "image": "https://www.pngplay.com/wp-content/uploads/13/Audi-R8-2019-Transparent-PNG.png",
       "brand": "Audi",
       "brandImage": "https://www.pngmart.com/files/10/Audi-Logo-PNG-File.png",
-      "seats": 2,
+      "seats": "2 seats",
       "rentalPrice": 200,
-      "maxSpeed": 220,
-      "engineOut": "4.0L V8"
+      "maxSpeed": "220 km/h",
+      "engineOut": "500 HP"
 	}
   ]
 }	

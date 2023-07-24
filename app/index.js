@@ -13,7 +13,11 @@ export default function Page() {
   return (
     <SafeAreaView className="flex-1 items-center">
       <View className="w-full h-[65%] bg-purple-400 bg-opacity-10">
-        <Image source={hero} className="w-full h-full object-cover" />
+        <Image
+          source={hero}
+          className="w-full h-full object-cover"
+          resizeMode="cover"
+        />
       </View>
       <View className="flex-1 items-center rounded-t-[50px] bg-white h-full w-full -mt-10">
         <View className="flex w-full mt-10 items-center px-10">

@@ -7,3 +7,5 @@ I need to access the url store in the asset property
 To create the search functionnality 
 -I need to apply the filter on the pool of item, and return the items that contain/include the text inputed*
 -And have to do a conditionnal rendering based on state of the filter, i.e if no filter render the whole data fetched 
+
+Display the cars based on categories and also seats, maybe fav ones
