@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Dimensions } from "react-native";
 import React, { createContext, useEffect, useState } from "react";
 
 export const CarsContext = createContext(null);
@@ -12,6 +12,9 @@ const CarContextProvider = ({ children }) => {
     brandImage: [],
   });
   const [randomCars, setRandomCars] = useState([]);
+
+  const height = Dimensions.get("screen").height;
+  const width = Dimensions.get("screen").width;
 
   const fetchData = async () => {
     try {
@@ -62,6 +65,8 @@ const CarContextProvider = ({ children }) => {
     isLoading,
     setIsLoading,
     carBrand,
+    height,
+    width,
   };
 
   return <CarsContext.Provider value={value}>{children}</CarsContext.Provider>;

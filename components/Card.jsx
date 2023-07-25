@@ -4,7 +4,7 @@ import { FontAwesome,FontAwesome5, MaterialCommunityIcons } from "@expo/vector-i
 
 const Card = ({iconName, title, specs}) => {
   return (
-	<View className="w-[32%] h-30 p-2 rounded-lg bg-blue-200 gap-1 mt-2">
+	<View className="w-[32%] h-30 p-2 rounded-lg bg-indigo-200 bg-opacity-10 gap-1 mt-2">
 		<View className="rounded-full bg-white p-2 w-10 h-10 flex items-center justify-center mb-2">
 			<MaterialCommunityIcons name={iconName} size={15}  />
 		</View>

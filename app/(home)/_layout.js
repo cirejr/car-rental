@@ -63,7 +63,7 @@ export default function Layout() {
         <Tabs.Screen name={screens.Cars} options={{ tabBarLabel: "Tab2" }} />
         <Tabs.Screen name={screens.Cart} options={{ tabBarLabel: "Tab1" }} />
         <Tabs.Screen name={screens.Profile} options={{ tabBarLabel: "Tab2" }} />
-        <Tabs.Screen
+        {/*<Tabs.Screen
           name="Cars/[id]"
           options={{
             href: null,
@@ -72,7 +72,7 @@ export default function Layout() {
               pressOpacity: true,
             },
           }}
-        />
+        />*/}
       </Tabs>
     </SafeAreaProvider>
   );
