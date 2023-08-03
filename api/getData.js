@@ -7,8 +7,23 @@ const client = createClient({
   useCdn: true,
 });
 
+const query = `*[_type == "car"] | order(_createdAt desc) {
+  description,
+  pricing,
+  carName,
+  carImage {
+    asset -> {
+      url
+    }
+  },
+  _id,
+  seats
+}`;
+
 export const getData = async () => {
-  const cars = await client.fetch('*[_type == "car"]');
-  console.log(cars);
-  return cars;
+  const data = await client.fetch(query).then((cars) => {
+    return cars;
+  });
+  console.log(data);
+  return data;
 };

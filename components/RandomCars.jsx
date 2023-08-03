@@ -10,7 +10,7 @@ import { Link } from 'expo-router';
 
 const RandomCars = () => {
 	const { randomCars, height, width } = useContext(CarsContext)
-	const cardWidth = ( 48 * (width / 100 ));
+	const cardWidth = ( 45 * (width / 100 ));
 	console.log("car width : ", cardWidth)
 	console.log("width : ", width)
 	//console.log("randomCar is : ", randomCars)
@@ -20,10 +20,10 @@ const RandomCars = () => {
 			<Text className="text-2xl font-semibold">Best Cars</Text>
 			<Text className="text-xl font-semibold text-gray-400">View All</Text>
 		</View>
-		<View className="flex-row items-center justify-between" style={{ width : width }}>
+		<View className="flex-row items-center justify-between px-3 mt-2" style={{ width : width }}>
 			{randomCars.map( car => (
 				<Link href={`/Cars/${car.id}`} key={car.id}>
-					<View className="flex mt-2 shadow-xl rounded-lg h-48 bg-white" style={{width : cardWidth}}>
+					<View className="flex mt-2 shadow-xl rounded-lg h-48 bg-gray-200" style={{width : cardWidth}}>
 						<Image source={{uri : car.image }} className="w-full h-1/2 object-cover rounded-t-lg"/>
 						<View className="flex w-full h-1/2 p-2">
 							<Text className="text-base font-semibold">{ car.name.length > 15 ? `${car.name.substring(0, 10)}...` : car.name}</Text>
