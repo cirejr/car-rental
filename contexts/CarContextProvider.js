@@ -21,6 +21,7 @@ const CarContextProvider = ({ children }) => {
     brandImage: [],
   });
   const [randomCars, setRandomCars] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   const height = Dimensions.get("screen").height;
   const width = Dimensions.get("screen").width;
