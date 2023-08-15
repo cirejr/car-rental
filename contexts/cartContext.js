@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React, { createContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const carContext = createContext();
+export const cartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
   const [cartItems, setcartItems] = useState(
@@ -56,7 +56,10 @@ const CartContextProvider = ({ children }) => {
   const getCartData = async () => {
     const cartItems = await AsyncStorage.getItem("cartItems");
     if (cartItems) {
-      setcartItems(JSON.parse(cartItems));
+      const parsedItems = JSON.parse(cartItems);
+      setcartItems(parsedItems || []);
+    } else {
+      setcartItems([{ id: 1, name: "Car", price: 1000 }]);
     }
   };
 
@@ -73,7 +76,7 @@ const CartContextProvider = ({ children }) => {
   }, [cartItems]);
 
   return (
-    <carContext.Provider
+    <cartContext.Provider
       value={{
         cartItems,
         addToCart,
@@ -83,7 +86,7 @@ const CartContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </carContext.Provider>
+    </cartContext.Provider>
   );
 };
 
