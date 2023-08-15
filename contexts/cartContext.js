@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const carContext = createContext();
 
-const cartContextProvider = ({ children }) => {
+const CartContextProvider = ({ children }) => {
   const [cartItems, setcartItems] = useState(
     AsyncStorage.getItem("cartItems")
       ? JSON.parse(AsyncStorage.getItem("cartItems"))
@@ -53,16 +53,24 @@ const cartContextProvider = ({ children }) => {
     );
   };
 
-  useEffect(async () => {
-    await AsyncStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  useEffect(async () => {
+  const getCartData = async () => {
     const cartItems = await AsyncStorage.getItem("cartItems");
     if (cartItems) {
       setcartItems(JSON.parse(cartItems));
     }
+  };
+
+  const storeCartData = async () => {
+    await AsyncStorage.setItem("cartItems", JSON.stringify(cartItems));
+  };
+
+  useEffect(() => {
+    getCartData();
   }, []);
+
+  useEffect(() => {
+    storeCartData();
+  }, [cartItems]);
 
   return (
     <carContext.Provider
@@ -79,4 +87,4 @@ const cartContextProvider = ({ children }) => {
   );
 };
 
-export default cartContextProvider;
+export default CartContextProvider;
