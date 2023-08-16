@@ -5,11 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export const cartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
-  const [cartItems, setcartItems] = useState(
-    AsyncStorage.getItem("cartItems")
-      ? JSON.parse(AsyncStorage.getItem("cartItems"))
-      : [],
-  );
+  const [cartItems, setcartItems] = useState([]);
 
   const addToCart = (item) => {
     const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
