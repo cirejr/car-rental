@@ -1,11 +1,16 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
+import { cartContext } from '../../contexts/cartContext'
 
 const Cart = () => {
+	const { cartItems } = useContext(cartContext)
+	console.log("cartItems are :", cartItems)
   return (
-	<View>
-	  <Text>Cart</Text>
-	</View>
+	cartItems.map( item => (
+		<View className="flex-1 items-center justify-center bg-black">
+			<Text>{item.id}</Text>
+		</View>
+	))
   )
 }
 

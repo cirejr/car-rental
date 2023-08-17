@@ -20,6 +20,8 @@ const CartContextProvider = ({ children }) => {
     } else {
       setcartItems([...cartItems, { ...item, quantity: 1 }]);
     }
+
+    console.log("item added to cart");
   };
 
   const removeFromCart = (item) => {
@@ -71,19 +73,15 @@ const CartContextProvider = ({ children }) => {
     storeCartData();
   }, [cartItems]);
 
-  return (
-    <cartContext.Provider
-      value={{
-        cartItems,
-        addToCart,
-        removeFromCart,
-        clearCart,
-        getCartTotal,
-      }}
-    >
-      {children}
-    </cartContext.Provider>
-  );
+  const value = {
+    cartItems,
+    addToCart,
+    removeFromCart,
+    clearCart,
+    getCartTotal,
+  };
+
+  return <cartContext.Provider value={value}>{children}</cartContext.Provider>;
 };
 
 export default CartContextProvider;

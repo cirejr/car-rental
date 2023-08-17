@@ -11,10 +11,12 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import { CarsContext } from '../../contexts/CarContextProvider';
 import Card from '../../components/Card';
+import { cartContext } from '../../contexts/cartContext';
 
 const DetailPage = () => {
 	const { id } = useLocalSearchParams();
 	const { carData } = useContext(CarsContext)
+	const { addToCart } = useContext(cartContext)
 	const router = useRouter()
 	//console.log("carData is : ", carData)
 	const car = carData.filter( car => car.id === id )
@@ -62,7 +64,7 @@ const DetailPage = () => {
 						</Text>
 					</View>	
 					<View className="flex-1 items-center rounded-t-[30px] bg-white h-full w-full justify-center">
-						<TouchableOpacity className="rounded-full p-4 bg-indigo-600 w-[80%] items-center justify-center">
+						<TouchableOpacity className="rounded-full p-4 bg-indigo-600 w-[80%] items-center justify-center" onPress={addToCart(car)}>
 							<Text className="text-lg text-white w-full text-center">Book Car</Text>
 						</TouchableOpacity>
 					</View>
