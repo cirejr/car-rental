@@ -71,19 +71,15 @@ const CartContextProvider = ({ children }) => {
     storeCartData();
   }, [cartItems]);
 
-  return (
-    <cartContext.Provider
-      value={{
-        cartItems,
-        addToCart,
-        removeFromCart,
-        clearCart,
-        getCartTotal,
-      }}
-    >
-      {children}
-    </cartContext.Provider>
-  );
+  const value = {
+    cartItems,
+    addToCart,
+    removeFromCart,
+    clearCart,
+    getCartTotal,
+  };
+
+  return <cartContext.Provider value={value}>{children}</cartContext.Provider>;
 };
 
 export default CartContextProvider;
