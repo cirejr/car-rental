@@ -20,6 +20,8 @@ const CartContextProvider = ({ children }) => {
     } else {
       setcartItems([...cartItems, { ...item, quantity: 1 }]);
     }
+
+    console.log("item added to cart");
   };
 
   const removeFromCart = (item) => {
@@ -54,8 +56,6 @@ const CartContextProvider = ({ children }) => {
     if (cartItems) {
       const parsedItems = JSON.parse(cartItems);
       setcartItems(parsedItems || []);
-    } else {
-      setcartItems([{ id: 1, name: "Car", price: 1000 }]);
     }
   };
 

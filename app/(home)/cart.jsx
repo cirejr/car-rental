@@ -1,12 +1,16 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
+import CartContextProvider, { cartContext } from '../../contexts/cartContext'
 
 const Cart = () => {
-  return (
-	<View>
-	  <Text>Cart</Text>
-	</View>
-  )
+	const { removeFromcart, cartItems, clearCart, getCartTotal, addToCart } = useContext(cartContext)
+
+	console.log("cart Items are :", cartItems)
+	return (
+		<View>
+			<Text>Cart</Text>
+		</View>
+	)
 }
 
 export default Cart
