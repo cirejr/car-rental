@@ -56,6 +56,8 @@ const CartContextProvider = ({ children }) => {
     if (cartItems) {
       const parsedItems = JSON.parse(cartItems);
       setcartItems(parsedItems || []);
+    } else {
+      setcartItems([{ id: 1, name: "Car", price: 1000 }]);
     }
   };
 
