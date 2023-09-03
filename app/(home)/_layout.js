@@ -31,7 +31,7 @@ export default function Layout() {
     <SafeAreaProvider>
       <Tabs
         screenOptions={({ route }) => ({
-          tabBarStyle: {
+            tabBarStyle: {
             position: "absolute",
             borderRadius: 25,
             bottom: 15,
@@ -39,7 +39,7 @@ export default function Layout() {
             marginHorizontal: 10,
             backgroundColor: "#26272D",
             height: 60,
-          },
+          }, 
           headerShown: false,
           tabBarShowLabel: false,
           tabBarIcon: ({ focused }) => {
@@ -57,6 +57,7 @@ export default function Layout() {
 
             return <Ionicons name={iconName} size={22} color="white" />;
           },
+          tabBarVisible: route.name !== screens.Cart, // Conditional tabBarVisible
         })}
       >
         <Tabs.Screen name={screens.Home} options={{ tabBarLabel: "Tab1" }} />

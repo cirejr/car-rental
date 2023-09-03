@@ -13,7 +13,7 @@ const CartContextProvider = ({ children }) => {
       setcartItems(
         cartItems.map((cartItem) =>
           cartItem.id === item.id
-            ? { ...cartItems, quantity: cartItem.quantity + 1 }
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem,
         ),
       );
@@ -27,7 +27,7 @@ const CartContextProvider = ({ children }) => {
   const removeFromCart = (item) => {
     const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
 
-    if ((isItemInCart.quantity = 1)) {
+    if (isItemInCart.quantity === 1) {
       setcartItems(cartItems.filter((cartItem) => cartItem.id !== item.id));
     } else {
       setcartItems(
@@ -46,7 +46,7 @@ const CartContextProvider = ({ children }) => {
 
   const getCartTotal = () => {
     return cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
+      (total, item) => total + item.rentalPrice * item.quantity,
       0,
     );
   };
