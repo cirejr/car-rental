@@ -3,6 +3,7 @@ import {
 	Image,
 	SafeAreaView,
 	Text,
+	ToastAndroid,
 	TouchableOpacity,
 	View,
 } from 'react-native'
@@ -19,14 +20,20 @@ const DetailPage = () => {
 	const { carData } = useContext(CarsContext)
 	const { addToCart } = useContext(cartContext)
 	const router = useRouter()
-	//console.log("carData is : ", carData)
 	const car = carData.filter(car => car.id === id)
 
 	const height = Dimensions.get("screen").height
 	const heightImage = height / 3
 	const width = Dimensions.get("screen").width
-
-	//console.log("the car is : ", car)
+	
+	const showToast = (car) => {
+		addToCart(car);
+		ToastAndroid.showWithGravity(
+			"Car added to cart !", 
+			ToastAndroid.LONG,
+			ToastAndroid.TOP,
+		)
+	}
 
 	return (
 		car.map(car => (
@@ -55,7 +62,7 @@ const DetailPage = () => {
 							<Card title="Max Speed" specs={car.maxSpeed} iconName="speedometer" />
 						</View>
 					</View>
-					<View className="flex-1 items-center rounded-t-[30px] bg-[#26272D] h-full w-full pt-1 ">
+					<View className="flex-1 items-center rounded-t-[30px] bg-[#26272D] h-full w-full mt-5 py-5 ">
 						<View className="flex-row justify-between w-full px-5 my-5">
 							<Text className="text-gray-300 font-semibold">
 								Rental Price
@@ -65,7 +72,7 @@ const DetailPage = () => {
 							</Text>
 						</View>
 						<View className="flex-1 items-center rounded-t-[30px] bg-white h-full w-full justify-center">
-							<TouchableOpacity className="rounded-full p-4 bg-indigo-600 w-[80%] items-center justify-center" onPress={() => addToCart(car)}>
+							<TouchableOpacity className="rounded-full p-4 bg-indigo-600 w-[80%] items-center justify-center" onPress={() => showToast(car)}>
 								<Text className="text-lg text-white w-full text-center">Book Car</Text>
 							</TouchableOpacity>
 						</View>

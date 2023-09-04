@@ -1,5 +1,4 @@
-import { SafeAreaView, ScrollView, View } from "react-native";
-import { Link } from "expo-router";
+import { SafeAreaView, ScrollView, View } from "react-native"; 
 
 import Header from "../../components/Header";
 import Search from "../../components/Search";
