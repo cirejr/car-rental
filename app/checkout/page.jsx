@@ -1,57 +1,76 @@
-import { View, Text, SafeAreaView, Pressable, ScrollView, Image} from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, SafeAreaView, Pressable, ScrollView, Image, TouchableOpacity} from 'react-native'
+import React, { useContext, useState } from 'react'
 import { Entypo, FontAwesome, Ionicons  } from '@expo/vector-icons';
 import { Link, useRouter } from 'expo-router';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import cards from '../../utils/cards'
-import paymentOptions from '../../utils/paymentOptions'
-import { FlashList } from '@shopify/flash-list';
-import { color } from 'react-native-reanimated';
+import PaymentOptions from '../../components/checkout/paymentOptions';
+import Cards from '../../components/checkout/Cards';
+import { cartContext } from '../../contexts/cartContext';
 
 
 
 const Page = () => {
-	const [isActive, setIsActive] = useState(false)
   const router = useRouter()
-
-	const onFocus = () => {
-		setIsActive(true)
-	}
+  const { getCartTotal, cartItems } = useContext(cartContext)
+  const discount = 0, vat = 14.99
+  const totalCheckout = getCartTotal() + discount + vat
 
   return (
     <SafeAreaView className="flex-1">
       <View className="h-36 flex-row items-center justify-between px-5 bg-indigo-500 rounded-b-3xl">
         <Pressable onPress={() => router.back()}>
-          <Entypo name="chevron-left" size={24} color="black" />
+          <Entypo name="chevron-left" size={24} color="white" />
         </Pressable>
+        <Text className="text-2xl font-semibold text-white">Checkout</Text>
         <Link href={'/cart'}>
-          <FontAwesome name="shopping-basket" size={24} color="black" />
+          <FontAwesome name="shopping-basket" size={24} color="white" />
         </Link>
       </View>
-      <Text className="px-5 mt-5 mb-3 font-semibold text-xl">Payment Options</Text>
-      <ScrollView className="w-full h-10 space-x-3 px-5 flex-grow-0" horizontal={true} showsHorizontalScrollIndicator={false}>
-        {paymentOptions.map(item => (
-			<View 
-				key={item.title} 
-				className="flex-row space-x-2 rounded-md px-3 py-2 border box-content text-center"
-				style={{ backgroundColor : item.isActive ? '#6366f1' : 'none', borderColor: item.isActive ? 'none' : '#e0e7ff'}}
-				onPress={ () => onFocus}
-			>
-				<FontAwesome name={item.icon} color={item.color} size={20} />
-				<Text className="" style={{ color: item.isActive ? 'white' : 'black'}} key={item.title}>{item.title}</Text>
-			</View>
-		))}
-      </ScrollView>
-      <ScrollView className="mt-5 w-full h-44 space-x-3 px-5 flex-grow-0" horizontal={true} showsHorizontalScrollIndicator={false}>
-        {cards.map(card => (
-			<View className="h-full w-72 relative" key={card.title}>
-				<Image source={card.image} className="h-full w-full overflow-hidden" resizeMode='contain'/>
-				<View className="absolute p-1 bg-indigo-500 right-1 bottom-0 rounded-br-lg rounded-tl-lg" style={{display : card.isSelected ? 'flex' : "none"}}>
-					<Ionicons name="checkmark-outline" size={20} color="white" />
-				</View>
-			</View>
-		))}
-      </ScrollView>
+      <PaymentOptions />
+      <Cards />
+      <View className="mt-6 bg-indigo-100 rounded-md p-4 w-auto mx-5">
+        <Text className="text-base">CVV</Text>
+      </View>
+      <View className="px-5 w-auto mt-6 space-y-2 mb-5">
+        <Text className="text-base">Apply Coupon <Text className='text-sm text-slate-500'>(if you have)</Text></Text>
+        <View className="flex-row justify-between items-center border border-indigo-200 rounded-md px-3 py-2">
+          <View className="flex-row space-x-2 w-auto items-center">
+            <MaterialCommunityIcons name="brightness-percent" size={18} color="black" />
+            <Text className="font-semibold">Apply Coupon</Text>
+          </View>
+          <MaterialCommunityIcons name="chevron-right" size={30} color="black" />
+        </View>
+      </View>
+      <View className="bg-indigo-100 rounded-3xl flex-1 mt-5 pt-5">
+        <View className="px-5 space-y-2">
+          <View className="flex-row justify-between items-center">
+            <Text className="font-semibold text-gray-500">Total</Text>
+            <Text className="text-gray-500 font-semibold">$ {getCartTotal()}</Text>
+          </View>
+          <View className="flex-row justify-between items-center">
+            <Text className="font-semibold text-gray-500">Discount</Text>
+            <Text className="text-gray-500 font-semibold">$ {discount}</Text>
+          </View>
+          <View className="flex-row justify-between items-center">
+            <Text className="font-semibold text-gray-500">Vat</Text>
+            <Text className="text-gray-500 font-semibold">$ {vat}</Text>
+          </View>
+          <View className="flex-row justify-between items-center mt-2">
+            <Text className="font-semibold text-lg">Grand Total </Text>
+            <Text className="font-semibold text-lg">$ {totalCheckout}</Text>
+          </View>
+        </View>
+        <View className="rounded-t-2xl mt-2 flex-1 flex-row bg-indigo-500 justify-between items-center px-5">
+          <View className="flex-row border border-indigo-200 px-3 py-3 space-x-1 rounded-md items-center">
+          <FontAwesome name="shopping-basket" size={13} color="white" />
+          <Text className="text-white font-semibold"> {cartItems.length}</Text>
+          </View>
+          <TouchableOpacity className="bg-indigo-400 py-3 border border-indigo-400 w-3/4 rounded-md">
+            <Text className="text-center text-white font-semibold">PAY NOW</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </SafeAreaView>
   )
 }
