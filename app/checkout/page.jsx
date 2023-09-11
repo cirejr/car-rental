@@ -1,8 +1,7 @@
 import { View, Text, SafeAreaView, Pressable, ScrollView, Image, TouchableOpacity, Modal} from 'react-native'
 import React, { useContext, useState } from 'react'
-import { Entypo, FontAwesome, Ionicons  } from '@expo/vector-icons';
+import { Entypo, FontAwesome, Ionicons, MaterialCommunityIcons  } from '@expo/vector-icons';
 import { Link, useRouter } from 'expo-router';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import PaymentOptions from '../../components/checkout/paymentOptions';
 import Cards from '../../components/checkout/Cards';
@@ -79,23 +78,26 @@ const Page = () => {
             <Text className="text-center text-white font-semibold">PAY NOW</Text>
           </TouchableOpacity>
 		  <Modal
-        animationType="slide"
-        transparent={true}
-        visible={isModalVisible}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setisModalVisible(!isModalVisible);
-        }}>
-        <View>
-          <View>
-            <Text>Hello World!</Text>
-            <Pressable
-              onPress={toggleModal}>
-              <Text>Hide Modal</Text>
-            </Pressable>
-          </View>
-        </View>
-      </Modal>
+			animationType="slide"
+			transparent={true}
+			visible={isModalVisible}
+			onRequestClose={() => {
+			Alert.alert('Modal has been closed.');
+			setisModalVisible(!isModalVisible);
+			}}>
+				<View className="flex-1 bg-indigo-200 opacity-90 rounded-t-3xl mt-20 space-y-2">
+					<View className="px-2 pt-1">
+						<Pressable onPress={toggleModal} className="self-end">
+							<Ionicons name="close-circle-sharp" size={24} color="black" />
+						</Pressable>
+					</View>
+					<View className="flex-1 justify-center items-center px-5">
+						<View>
+							<Text className="font-semibold text-2xl">Payment feature coming soon</Text>
+						</View>
+					</View>
+				</View>
+			</Modal>
         </View>
       </View>
     </SafeAreaView>

@@ -9,7 +9,7 @@ import CartContextProvider from "../contexts/cartContext";
 
 const Layout = () => {
   return (
-    <ClerkProvider publishableKey={Constants.process.env.CLERK_PUBLISHABLE_KEY}>
+    <ClerkProvider>
       <CarContextProvider>
         <CartContextProvider>
           <Slot />
