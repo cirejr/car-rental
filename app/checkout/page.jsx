@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Pressable, ScrollView, Image, TouchableOpacity} from 'react-native'
+import { View, Text, SafeAreaView, Pressable, ScrollView, Image, TouchableOpacity, Modal} from 'react-native'
 import React, { useContext, useState } from 'react'
 import { Entypo, FontAwesome, Ionicons  } from '@expo/vector-icons';
 import { Link, useRouter } from 'expo-router';
@@ -11,10 +11,16 @@ import { cartContext } from '../../contexts/cartContext';
 
 
 const Page = () => {
+	const [isModalVisible, setisModalVisible] = useState(false)
   const router = useRouter()
   const { getCartTotal, cartItems } = useContext(cartContext)
   const discount = 0, vat = 14.99
   const totalCheckout = getCartTotal() + discount + vat
+
+  const toggleModal = () => {
+	setisModalVisible(!isModalVisible)
+  }
+
 
   return (
     <SafeAreaView className="flex-1">
@@ -66,9 +72,30 @@ const Page = () => {
           <FontAwesome name="shopping-basket" size={13} color="white" />
           <Text className="text-white font-semibold"> {cartItems.length}</Text>
           </View>
-          <TouchableOpacity className="bg-indigo-400 py-3 border border-indigo-400 w-3/4 rounded-md">
+          <TouchableOpacity 
+		  		className="bg-indigo-400 py-3 border border-indigo-400 w-3/4 rounded-md"
+				onPress={toggleModal}
+			>
             <Text className="text-center text-white font-semibold">PAY NOW</Text>
           </TouchableOpacity>
+		  <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isModalVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setisModalVisible(!isModalVisible);
+        }}>
+        <View>
+          <View>
+            <Text>Hello World!</Text>
+            <Pressable
+              onPress={toggleModal}>
+              <Text>Hide Modal</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
         </View>
       </View>
     </SafeAreaView>

@@ -3,10 +3,10 @@
   "editor.fontVariations": false,
   "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
   "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
-  "editor.fontSize": 13,
+  "editor.fontSize": 14,
   "git.pruneOnFetch": true,
   "NeonScrollbar.RGBgreen": 45,
   "NeonScrollbar.RGBblue": 255,
   "NeonScrollbar.RGBred": 18,
-  "editor.fontFamily": "Hack"
+  "editor.fontFamily": "JetBrainsMono Nerd Font"
 }
