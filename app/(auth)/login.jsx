@@ -40,7 +40,6 @@ const Login = () => {
 
 		<Spinner visible={loading} animation='slide' />
 		<TextInput
-			autoFocus={true}
 			autoCapitalize="none"
 			placeholder="jundev@mecar.com"
 			value={emailAdress}
@@ -54,10 +53,10 @@ const Login = () => {
 			secureTextEntry
 			onChangeText={(text) => setPassword(text)}
 			className="rounded-md h-10 px-2 border border-indigo-200 w-full"
-		/>
-		<Pressable className="rounded-md bg-blue-600 py-3 px-5 w-2/3 items-center" onPress={onSignIn}>
-			<Text className="font-semibold text-white">Login</Text>
-		</Pressable>
+			/>
+			<Pressable className="rounded-md bg-blue-600 py-3 px-5 w-2/3 items-center" onPress={onSignIn}>
+				<Text className="font-semibold text-white">Login</Text>
+			</Pressable>
 		<View className="flex w-2/3">
 			<Link href="/reset" asChild>
 				<Pressable className="">
