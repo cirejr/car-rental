@@ -2,6 +2,8 @@ import { Tabs, useRouter } from "expo-router";
 import { TouchableOpacity } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
+import { useAuth } from "@clerk/clerk-expo";
+import { Pressable } from "react-native";
 
 {
   /*const routes = {
@@ -10,6 +12,20 @@ import { Ionicons } from "@expo/vector-icons";
 	CATEGORIES: 'categories',
 	PROFILE : 'profile'
 }*/
+}
+
+export const LogoutButton = () => {
+  const { signOut } = useAuth()
+
+  const doLogOut = () => {
+    signOut()
+  }
+
+  return(
+		<Pressable onPress={doLogOut} style={{ marginRight: 10 }}>
+      <Ionicons name="log-out-outline" size={24} color={'#fff'} />
+    </Pressable>
+  )
 }
 
 export const screens = {
@@ -27,6 +43,7 @@ export const route = {
 };
 
 export default function Layout() {
+  const { isSignedIn } = useAuth()
   return (
     <SafeAreaProvider>
       <Tabs
@@ -60,10 +77,12 @@ export default function Layout() {
           tabBarVisible: route.name !== screens.Cart, // Conditional tabBarVisible
         })}
       >
-        <Tabs.Screen name={screens.Home} options={{ tabBarLabel: "Tab1" }} />
-        <Tabs.Screen name={screens.Cars} options={{ tabBarLabel: "Tab2" }} />
-        <Tabs.Screen name={screens.Cart} options={{ tabBarLabel: "Tab1" }} />
-        <Tabs.Screen name={screens.Profile} options={{ tabBarLabel: "Tab2" }} />
+        <Tabs.Screen name={screens.Home} />
+        <Tabs.Screen name={screens.Cars} />
+        <Tabs.Screen name={screens.Cart} />
+        <Tabs.Screen name={screens.Profile} 
+          options={{headerRight : () => <LogoutButton />}} 
+          redirect={!isSignedIn}/>
         {/*<Tabs.Screen
           name="Cars/[id]"
           options={{

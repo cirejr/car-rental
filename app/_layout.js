@@ -10,6 +10,7 @@ import CartContextProvider from "../contexts/cartContext";
 const clerkPublishabKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 const tokenCache = {
+   
   async getToken(key) {
     try {
       return SecureStore.getItemAsync(key);
