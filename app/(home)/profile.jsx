@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, TextInput, Pressable } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useUser } from '@clerk/clerk-expo'
 
 export default function Profile() {
@@ -10,12 +10,14 @@ export default function Profile() {
 	const onSaveUser = async () => {
 		try {
 			await user?.update({
-				firstName: !firstName,
-				lastName: !lastName
+				firstName,
+				lastName
 			})
+			alert('Username updated')
 		} catch (error) {
-			console.log(error)
+			console.log(error.errors[0].message)
 		}
+		//console.log(firstName, lastName)
 	}
 
 	return(
@@ -28,14 +30,14 @@ export default function Profile() {
 				<TextInput 
 					className="border border-indigo-200 px-3 py-1 rounded-md"
 					placeholder="First Name"
-					value={firstName || ''}
-					onTextChange={(text) => setFirstName(text)}
+					value={firstName}
+					onChangeText={setFirstName}
 				/>
 				<TextInput 
 					className="border border-indigo-200 px-3 py-1 rounded-md"
-					placeholder="First Name"
-					value={lastName || ''}
-					onTextChange={(text) => setLastName(text)}
+					placeholder="Last Name"
+					value={lastName}
+					onChangeText={setLastName}
 				/>
 				<Pressable className="w-1/2" onPress={onSaveUser}>
 					<Text>Update Account</Text>
