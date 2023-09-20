@@ -17,7 +17,7 @@ const Search = () => {
           clearButtonMode="always"
           placeholder="search your dream car..."
           value={searchQuery}
-          onChange={(query) => handleSearch(query)}
+          onChangeText={(query) => handleSearch(query)}
           className=""
         />
       </View>

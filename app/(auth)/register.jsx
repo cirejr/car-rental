@@ -1,6 +1,6 @@
 import { View, Text, Pressable } from 'react-native'
 import React, { useState } from 'react'
-import { useSignUp } from '@clerk/clerk-expo'
+import { useOAuth, useSignUp } from '@clerk/clerk-expo'
 import { Stack } from 'expo-router'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { TextInput } from 'react-native-gesture-handler'
@@ -25,11 +25,11 @@ const Register = () => {
 				password
 			})
 
-			await signUp.prepareEmailAddressVerification({strategy : 'email_code'})
+			await signUp.prepareEmailAddressVerification({ strategy : 'email_code' })
 
 			setPendingVerification(true);
 		} catch (e) {
-			alert(e.errors.message[0])
+			alert(e.errors[0].message)
 		}finally{
 			setLoading(false)
 		}
@@ -48,8 +48,10 @@ const Register = () => {
 			await setActive({
 				session: completeSignUp.createdSessionId
 			})
+			
+			alert("Email verified & account created succesfully ")
 		} catch (e) {
-			alert(e.errors.message[0])
+			alert(e.errors[0].message)
 		} finally{
 			setLoading(false)
 		}
@@ -63,7 +65,6 @@ const Register = () => {
 		{!pendingVerification && (
 			<View className="space-y-2 w-full">		
 				<TextInput
-					autoFocus={true}
 					autoCapitalize="none"
 					placeholder="jundev@mecar.com"
 					value={emailAddress}
@@ -72,14 +73,13 @@ const Register = () => {
 				/>
 				<TextInput 
 					placeholder='password'
-					clearButtonMode='always'
 					value={password}
 					secureTextEntry
 					onChangeText={(text) => setPassword(text)}
 					className="rounded-md h-10 px-2 border border-indigo-200 w-full"
 				/>
 				<Pressable className="rounded-md bg-blue-600 py-3 px-5 w-2/3 items-center" onPress={onSignUp}>
-					<Text className="font-semibold text-white">Register</Text>
+					<Text className="font-semibold text-white">Sign Up</Text>
 				</Pressable>
 			</View>
 		)}
@@ -94,6 +94,9 @@ const Register = () => {
 						className="rounded-md h-10 px-2 border border-indigo-200 w-full"
 					/>
 				</View>
+				<Pressable className="rounded-md bg-blue-600 py-3 px-5 w-2/3 items-center" onPress={onVerify}>
+					<Text className="font-semibold text-white">Verify Email</Text>
+				</Pressable>
 			</>
 		)}
 	</View>

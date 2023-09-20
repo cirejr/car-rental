@@ -15,9 +15,9 @@ export default function Profile() {
 			})
 			alert('Username updated')
 		} catch (error) {
-			console.log(error.errors[0].message)
+			console.log(error)
 		}
-		//console.log(firstName, lastName)
+		console.log(firstName, lastName)
 	}
 
 	return(
