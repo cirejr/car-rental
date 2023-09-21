@@ -4,6 +4,10 @@ import { useOAuth, useSignUp } from '@clerk/clerk-expo'
 import { Stack } from 'expo-router'
 import Spinner from 'react-native-loading-spinner-overlay'
 import { TextInput } from 'react-native-gesture-handler'
+import CustomTextInput from '../../components/auth/CustomTextInput'
+import CustomShapes from '../../components/auth/CustomShapes'
+import CardContainer from '../../components/auth/CardContainer'
+import AuthButton from '../../components/auth/AuthButton'
 
 const Register = () => {
 	const { isLoaded, signUp, setActive } = useSignUp()
@@ -58,45 +62,55 @@ const Register = () => {
 	}
 
   return (
-	<View className="flex-1 justify-center items-center px-5 space-y-3">
-		<Stack.Screen options={{ headerBackVisible:!pendingVerification}} />
+	<View className="flex-1 items-center justify-center bg-slate-100">
+		<Stack.Screen options={{ header:true , headerBackVisible: !pendingVerification}} />
 		<Spinner visible={loading} />
+		<CustomShapes />
 
 		{!pendingVerification && (
-			<View className="space-y-2 w-full">		
-				<TextInput
-					autoCapitalize="none"
-					placeholder="jundev@mecar.com"
+			<>
+			<Text className="text-center items-center text-white text-2xl mb-2">Sign Up</Text>
+			<Text className="text-white mb-5 ">Please Create your account to continue</Text>
+			<CardContainer style={{ paddingTop : 20, height: '40%', gap: 5 }}>
+				<CustomTextInput 
+					label='Email Adress'
+					placeholder="your email"
+					secureTextEntry={false}
 					value={emailAddress}
 					onChangeText={(text)=> setEmailAddress(text)}
-					className="rounded-md h-10 px-2 border border-indigo-200 w-full"
 				/>
-				<TextInput 
+				<CustomTextInput 
+					label='Password'
 					placeholder='password'
+					secureTextEntry={true}
 					value={password}
-					secureTextEntry
 					onChangeText={(text) => setPassword(text)}
-					className="rounded-md h-10 px-2 border border-indigo-200 w-full"
 				/>
-				<Pressable className="rounded-md bg-blue-600 py-3 px-5 w-2/3 items-center" onPress={onSignUp}>
-					<Text className="font-semibold text-white">Sign Up</Text>
-				</Pressable>
-			</View>
+				<AuthButton 
+					title='Create Account'
+					onPress={onSignUp}
+				/>
+			</CardContainer>
+			</>
 		)}
 
 		{pendingVerification && (
 			<>
-				<View>
-					<TextInput 
-						value={code}
-						onChangeText={(code) => setCode(code)}
-						placeholder='code...'
-						className="rounded-md h-10 px-2 border border-indigo-200 w-full"
-					/>
-				</View>
-				<Pressable className="rounded-md bg-blue-600 py-3 px-5 w-2/3 items-center" onPress={onVerify}>
-					<Text className="font-semibold text-white">Verify Email</Text>
-				</Pressable>
+			<Text className="text-center items-center text-white text-2xl mb-2">Email Verification</Text>
+			<Text className="text-white mb-5 ">Put in the code sent to your email</Text>
+			<CardContainer style={{ paddingTop : 20, height: '30%', gap: 5 }}>
+				<CustomTextInput 
+					label='Code'
+					placeholder='code ...'
+					secureTextEntry={false}
+					value={code}
+					onChangeText={(code) => setCode(code)}
+				/>
+				<AuthButton 
+					title='Verify Email'
+					onPress={onVerify}
+				/>
+			</CardContainer>
 			</>
 		)}
 	</View>
