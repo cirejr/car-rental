@@ -49,7 +49,7 @@ const InitialLayout = () => {
 
 const Layout = () => {
   return (
-    <ClerkProvider publishableKey={"pk_test_bGFyZ2Utb2N0b3B1cy0yNC5jbGVyay5hY2NvdW50cy5kZXYk"} tokenCache={tokenCache}>
+    <ClerkProvider publishableKey={EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY} tokenCache={tokenCache}>
       <CarContextProvider>
         <CartContextProvider>
           <InitialLayout />
