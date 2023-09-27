@@ -7,10 +7,9 @@ import * as SecureStore from "expo-secure-store";
 import CarContextProvider from "../contexts/CarContextProvider";
 import CartContextProvider from "../contexts/cartContext";
 
-const clerkPublishabKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+const clerkPublishabKey = process.env.CLERK_PUBLISHABLE_KEY;
 
 const tokenCache = {
-   
   async getToken(key) {
     try {
       return SecureStore.getItemAsync(key);
@@ -49,7 +48,7 @@ const InitialLayout = () => {
 
 const Layout = () => {
   return (
-    <ClerkProvider publishableKey={EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY} tokenCache={tokenCache}>
+    <ClerkProvider publishableKey={clerkPublishabKey} tokenCache={tokenCache}>
       <CarContextProvider>
         <CartContextProvider>
           <InitialLayout />
