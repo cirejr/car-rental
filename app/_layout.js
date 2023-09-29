@@ -3,11 +3,13 @@ import React, { useEffect } from "react";
 import { Slot, Stack, useRouter, useSegments } from "expo-router";
 import { ClerkProvider, useAuth } from "@clerk/clerk-expo";
 import * as SecureStore from "expo-secure-store";
+import Constants from "expo-constants"
 
 import CarContextProvider from "../contexts/CarContextProvider";
 import CartContextProvider from "../contexts/cartContext";
 
 const clerkPublishabKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
+const apiUrl = Constants.expoConfig.extra.clerkPublishKey
 
 const tokenCache = {
    
@@ -49,7 +51,7 @@ const InitialLayout = () => {
 
 const Layout = () => {
   return (
-    <ClerkProvider publishableKey={EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY} tokenCache={tokenCache}>
+    <ClerkProvider publishableKey={apiUrl} tokenCache={tokenCache}>
       <CarContextProvider>
         <CartContextProvider>
           <InitialLayout />

@@ -7,6 +7,7 @@
     "name": "car-rental",
     "slug": "car-rental",
     "extra": {
+		"clerkPublishKey" : "pk_test_bGFyZ2Utb2N0b3B1cy0yNC5jbGVyay5hY2NvdW50cy5kZXYk",
       "router": {
         "origin": "/api/db.json"
       }
