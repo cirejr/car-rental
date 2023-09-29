@@ -12,7 +12,6 @@ const clerkPublishabKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 const apiUrl = Constants.expoConfig.extra.clerkPublishKey
 
 const tokenCache = {
-   
   async getToken(key) {
     try {
       return SecureStore.getItemAsync(key);
